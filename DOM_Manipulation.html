@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+
+    <!-- Implement a css style over the HTML document -->
+    <style>
+        .highlight {
+            color: white;
+            background-color: black;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section>
+        <img src="dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+    </section>
+
+    <script>
+        // Store the node in a variable
+        const link = document.querySelector('a');
+        const section = document.querySelector('section');
+        const para = document.createElement('p');
+        const linkPara = document.querySelector('p');
+        const text = document.createTextNode(' — the premier source for web development knowledge.');
+
+        // Manipulate the node for <a>
+        link.textContent = 'Mozilla Developer Network';
+        link.href = 'https://developer.mozilla.org';
+
+        // Other example with <section>
+        para.textContent = 'We hope you enjoy this ride.'
+        section.appendChild(para);
+        linkPara.appendChild(text);
+        sec.appendChild(linkPara); // put the first <p> in the DOM tree a the bottom of its parent node
+
+        // Remove a child in a node
+        linkPara.removeChild(text);
+        linkPara.remove(); // remove the node by itself
+        // linkPara.parentNode.removeChild(linkPara) same as above for older browser
+
+        // Updating the style of the HTML elements
+        para.style.color = 'blue';
+        para.style.fontSize = 12;
+        link.style.textDecoration = 'none';
+
+        // Set attributes in a node such as class, id, range...
+        para.setAttribute('class', 'highlight');
+
+
+        // Resize the window (viewport)
+        const div = document.querySelector('div');
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
+
+        // Dynamically alter the width and height of the div
+        div.style.width = winWidth + 'px';
+        div.style.height = winHeight + 'px';
+
+        // Fire a fuction everytime the window is resized
+        window.onresize = function () {
+            winWidth = window.innerWidth;
+            winHeight = window.innerHeight;
+            div.style.width = winWidth + 'px';
+            div.style.height = winHeight + 'px';
+        }
+
+    </script>
+</body>
+
+</html>

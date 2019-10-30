@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Window resize example</title>
+
+</head>
+
+<body>
+
+    <h1>My shopping list</h1>
+    <div class='form'>
+        <p>Enter a new item: </p>
+        <input type="text">
+        <button>Add item</button>
+        <button id='removeAll'>Remove all</button>
+    </div>
+
+    <div class='list'>
+
+    </div>
+
+
+    <script>
+        // text type in the input should be append to div.list with a point and a button
+        // when add item is clicked clear input and focus in
+
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        const list = document.querySelector('.list');
+        const btnRemoveAll = document.getElementById('removeAll');
+        const ulManip = document.querySelector('ul');
+
+
+        btn.onclick = function () {
+            const ul = document.createElement('ul');
+            const btnRemove = document.createElement('button');
+            const li = document.createElement('li');
+
+            var inputValue = input.value;
+            input.value = "";
+
+
+            list.appendChild(ul);
+            ul.appendChild(li);
+            li.textContent = inputValue;
+
+            btnRemove.textContent = 'Remove';
+            btnRemove.onclick = function () {
+                ul.removeChild(li);
+            }
+            li.appendChild(btnRemove);
+
+            input.focus();
+        };
+
+        // btnRemoveAll.onclick = function () {
+        //     list.removeChild(ulManip);
+        // }
+
+    </script>
+</body>
+
+</html>
