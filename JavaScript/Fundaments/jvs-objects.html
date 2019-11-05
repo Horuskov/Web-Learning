@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a
+            href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What
+            are browser developer tools</a> for more information).</p>
+
+</body>
+
+<script>
+    function Personne(prenom, nom, age, genre, interets) {
+        this.nom = {
+            prenom,
+            nom
+        }
+        this.age = age;
+        this.genre = genre;
+        this.interets = interets;
+        this.bio = function () {
+            var string = this.nom.prenom + ' ' + this.nom.nom + ' a ' + this.age + ' ans. '
+
+            var pronoun;
+
+            if (this.genre === 'homme') { pronoun = 'Il aime '; }
+            else if (this.genre === 'femme') { pronou = 'Elle aime '; }
+            else { pronoun = 'Cette chose aime '; }
+
+            string += pronoun;
+
+            if (this.interets.length == 1) { string += this.interets[0] + '.' }
+            else if (this.interets.length == 2) { string += this.interets[0] + ' et ' + this / interets[1] + '.' }
+            else {
+                for (var i = 0; i < this.interets.length; i++) {
+                    if (i == this.interets.length - 1) { string += ' et ' + this.interets[i] + '.'; }
+                    else if (i == this.interets.length - 2) { string += this.interets[i]; }
+                    else { string += this.interets[i] + ', '; }
+                }
+            }
+            alert(string);
+        }
+        this.salutation = function () {
+            alert('Bonjour ! Je m\'appelle ' + this.nom.prenom + '.');
+        }
+    }
+
+    var personne1 = new Personne('Bob', 'D\'Auckland', 45, 'mi-homme, mi-bête', ['tuer des gens', 'espionner', 'boire de la Vodka']);
+    var personne2 = new Personne('John', 'Seyx', 19, 'pleutre', ['effrayer les vieilles', 'chercher des crosses avec l\'armée locale', 'boire de la grenadine', 'réfléchir sur un lac']);
+
+    Personne.prototype.aurevoir = function () {
+        alert(this.nom.prenom + ' a tuey la bete. Vive le roy.')
+    }
+
+</script>
+
+</html>
